@@ -16,6 +16,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('master');
 });
-Route::prefix('Note')->name('Note.')->group( function(){
-    return view('master')->name('Create');
+
+Route::get('/Note', function () {
+    return view('Note/create');
 });
+// Route::prefix('Note')->name('Note.')->group( function(){
+//     return view('Note/create')->name('Create');
+// });
