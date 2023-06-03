@@ -14,8 +14,11 @@ return new class extends Migration
         Schema::create('Note', function (Blueprint $table) {
             $table->bigIncrements('NoteID');
             $table->string('Name');
-            $table->string('Content');
+            $table->text('Content');
             $table->timestamps();
+            $table->bigInteger('IdCategory')->unsigned();
+
+            $table->foreign('IdCategory')->references('CategoryID')->on('Category');
         });
     }
 

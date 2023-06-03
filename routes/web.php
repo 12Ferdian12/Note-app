@@ -20,6 +20,6 @@ Route::get('/', function () {
 Route::get('/Note', function () {
     return view('Note/create');
 });
-// Route::prefix('Note')->name('Note.')->group( function(){
-//     return view('Note/create')->name('Create');
-// });
+Route::prefix('Note')->name('Note.')->group( function(){
+    Route::get('/Note', function () {return view('Note/create');})-> name('create') ;
+});
