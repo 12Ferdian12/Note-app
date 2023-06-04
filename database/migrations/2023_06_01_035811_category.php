@@ -15,6 +15,7 @@ return new class extends Migration
         Schema::create('Category', function(Blueprint $table){
             $table->bigIncrements('CategoryID');
             $table->string('CategoryName');
+            $table->text('CategoryAbout');
         });
     }
 

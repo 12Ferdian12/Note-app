@@ -12,7 +12,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        return view('Category.index');
+        $Category = Category::all();
+        return view('Category.index', compact('Category'));
     }
 
     /**
@@ -29,7 +30,8 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         Category::insert([
-            'CategoryName' =>$request->CategoryName
+            'CategoryName' =>$request->CategoryName,
+            'CategoryAbout' =>$request->CategoryAbout
         ]);
 
         return view('master');
