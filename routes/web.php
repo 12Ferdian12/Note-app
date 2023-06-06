@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\NoteController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,10 +23,13 @@ Route::get('/', function () {
 //     return view('Note/create');
 // });
 Route::prefix('Note')->name('Note.')->group( function(){
-    Route::get('/Note', function () {return view('Note/create');})-> name('create') ;
+    Route::get('/', [NoteController::class, 'index'])->name('index');
+    Route::get('/Create',[NoteController::class, 'create'])->name('create');
+    Route::post('/Create',[NoteController::class, 'store'])->name('store');
+
 });
 Route::prefix('Category')->name('Category.')->group( function(){
-    Route::get('/Category', [CategoryController::class, 'index']) -> name('index') ;
-    Route::get('/Create', [CategoryController::class, 'create']) -> name('create') ;
+    Route::get('/Category', [CategoryController::class, 'index']) -> name('index');
+    Route::get('/Create', [CategoryController::class, 'create']) -> name('create');
     Route::post('/Create', [CategoryController::class, 'store'])->name('store');
 });
