@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Category;
+use PhpParser\Node\Stmt\Return_;
 
 class CategoryController extends Controller
 {
@@ -12,8 +13,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $Category = Category::all();
-        return view('Category.index', compact('Category'));
+        $Categorys = Category::all();
+        return view('Category.index', compact('Categorys'));
     }
 
     /**
@@ -34,7 +35,7 @@ class CategoryController extends Controller
             'CategoryAbout' =>$request->CategoryAbout
         ]);
 
-        return view('master');
+        return view('Category.index');
     }
 
     /**
@@ -66,6 +67,12 @@ class CategoryController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        try{
+            Category::where('CategoryID',$id)->delete();
+        }catch(\Exception $e){
+            dd($e->getMessage());
+            return  $e->getMessage();
+        }
+        return redirect()->route('Category.index');
     }
 }

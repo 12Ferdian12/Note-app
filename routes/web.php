@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('master');
+    return redirect()->route('Category.index');
 });
 
 // Route::get('/Note', function () {
@@ -29,7 +29,8 @@ Route::prefix('Note')->name('Note.')->group( function(){
 
 });
 Route::prefix('Category')->name('Category.')->group( function(){
-    Route::get('/Category', [CategoryController::class, 'index']) -> name('index');
+    Route::get('/', [CategoryController::class, 'index']) -> name('index');
     Route::get('/Create', [CategoryController::class, 'create']) -> name('create');
     Route::post('/Create', [CategoryController::class, 'store'])->name('store');
+    Route::delete('/{id}/Delete',[CategoryController::class, 'destroy'])->name('delete');   
 });

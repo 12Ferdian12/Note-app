@@ -39,5 +39,6 @@
   <div class="">
     @yield('content')
   </div>
+  <script src="https://kit.fontawesome.com/8fa82cf36d.js" crossorigin="anonymous"></script>
 </body>
 </html>
