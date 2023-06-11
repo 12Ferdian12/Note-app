@@ -58,7 +58,11 @@ class NoteController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        // dd($id);
+        $Note = Note::find($id);
+        $Category = Category::all();
+
+        return view('Note.edit', compact('Note','Category'));
     }
 
     /**
@@ -74,6 +78,13 @@ class NoteController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        // dd($id);
+        try{
+            Note::where('NoteID',$id)->delete();
+        } catch(\Exception $e){
+            dd($e->getMessage());
+            return  $e->getMessage();
+        }
+        return redirect()->route('Note.index');
     }
 }
