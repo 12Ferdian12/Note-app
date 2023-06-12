@@ -59,7 +59,8 @@ class NoteController extends Controller
     public function edit(string $id)
     {
         // dd($id);
-        $Note = Note::find($id);
+        $Note = Note::where('NoteID',$id)->first();
+        // $Note = Note::find($id);
         $Category = Category::all();
 
         return view('Note.edit', compact('Note','Category'));
