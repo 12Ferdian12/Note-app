@@ -10,7 +10,7 @@
     </a>
     <div class="grid grid-cols-4 ">
         @foreach ($Categorys as $CT)
-            <div class=" mx-2 my-2 shadow-xl shadow-lime-400 border-2 w-[350px] h-[200px] rounded text-white bg-slate-700 border-black">
+            <div class=" mx-2 my-2 shadow  border-2 w-[350px] h-[200px] rounded text-white bg-slate-700 border-black">
                 <div class="px-5 py-2">
                     <div class="flex">
                         <h1 class=" text-2xl font-semibold mb-2 border-b border-b-white max-w-[100px]">{{ $CT->CategoryName }}</h1>
@@ -20,7 +20,7 @@
                             @method('DELETE')
                                 <button class="ml-5 mr-2 h-[30px] w-[60px] bg-red-600 border border-black rounded px-1" type="submit" > Delete </button>
                         </form>                   
-                        <a class="mr-5 h-[30px] w-[50px] bg-yellow-500 border border-black rounded px-2" href="">
+                        <a class="mr-5 h-[30px] w-[50px] bg-yellow-500 border border-black rounded px-2" href="{{ route('Category.edit',['id'=>$CT->CategoryID]) }}">
                             <button > Edit </button>
                         </a>
                         <a href="" class="py-1">

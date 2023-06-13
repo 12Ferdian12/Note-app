@@ -41,7 +41,7 @@ class NoteController extends Controller
             'IdCategory' =>$request->IDCategory,
             'Content' =>$request->Description,
         ]);
-        return view('Note.index');
+        return redirect()->route('Note.index');
         
     }
 
@@ -71,7 +71,13 @@ class NoteController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        // dd($request, $id);
+        Note::where('NoteID',$id)->update([
+            'Name'=>$request->NoteName,
+            'IdCategory'=>$request->IDCategory,
+            'Content'=>$request->Description,
+        ]);
+        return redirect()->route('Note.index');
     }
 
     /**

@@ -35,7 +35,7 @@ class CategoryController extends Controller
             'CategoryAbout' =>$request->CategoryAbout
         ]);
 
-        return view('Category.index');
+        return redirect()->route('Category.index');
     }
 
     /**
@@ -51,7 +51,9 @@ class CategoryController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $Category = Category::where('CategoryID',$id)->first();
+        // dd($Category);
+        return view('Category.edit', compact('Category'));
     }
 
     /**
@@ -59,7 +61,13 @@ class CategoryController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        // dd($request, $id);
+        Category::where('CategoryID',$id)->update([
+            'CategoryName'=>$request->CategoryName,
+            'CategoryAbout'=>$request->Desc,
+        ]);
+        return redirect()->route('Category.index');
+
     }
 
     /**
