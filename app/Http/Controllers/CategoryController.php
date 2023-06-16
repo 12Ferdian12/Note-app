@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Category;
+use Illuminate\Console\View\Components\Alert;
 use PhpParser\Node\Stmt\Return_;
 
 class CategoryController extends Controller
@@ -78,9 +79,8 @@ class CategoryController extends Controller
         try{
             Category::where('CategoryID',$id)->delete();
         }catch(\Exception $e){
-            dd($e->getMessage());
-            return  $e->getMessage();
+            return redirect()->back()->withErrors(['msg' => 'Category has a value!']);
         }
-        return redirect()->route('Category.index');
+        return redirect()->route('Category.index',);
     }
 }
