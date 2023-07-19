@@ -13,6 +13,8 @@ class Category extends Model
 
     protected $primarykey = 'CategoryID';
 
+    public $timestamps = false;
+
     protected $fillable = [
         'CategoryName',
         'CategoryAbout',

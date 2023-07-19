@@ -23,7 +23,6 @@ Route::get('/', function () {
 //     return view('Note/create');
 // });
 Route::prefix('Note')->name('Note.')->group( function(){
-    Route::get('/', [NoteController::class, 'index'])->name('index');
     Route::get('/Create',[NoteController::class, 'create'])->name('create');
     Route::post('/Create',[NoteController::class, 'store'])->name('store');
     Route::delete('/{id}/Delete',[NoteController::class, 'destroy'])->name('delete');
@@ -32,6 +31,7 @@ Route::prefix('Note')->name('Note.')->group( function(){
 });
 Route::prefix('Category')->name('Category.')->group( function(){
     Route::get('/', [CategoryController::class, 'index']) -> name('index');
+    Route::get('/Note', [NoteController::class, 'index'])->name('note');
     Route::get('/Create', [CategoryController::class, 'create']) -> name('create');
     Route::post('/Create', [CategoryController::class, 'store'])->name('store');
     Route::delete('/{id}/Delete',[CategoryController::class, 'destroy'])->name('delete');

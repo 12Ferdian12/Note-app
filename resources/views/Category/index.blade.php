@@ -26,7 +26,7 @@
                     <a class="mr-5 h-[30px] w-[50px] bg-yellow-500 border border-black rounded px-2" href="{{ route('Category.edit',['id'=>$CT->CategoryID]) }}">
                         <button > Edit </button>
                     </a>
-                    <a href="" class="py-1">
+                    <a href="{{ route('Category.note') }}" class="py-1">
                         <i class="fa-regular fa-folder-open fa-lg"></i>
                     </a>
                 </div>

@@ -41,7 +41,7 @@ class NoteController extends Controller
             'IdCategory' =>$request->IDCategory,
             'Content' =>$request->Description,
         ]);
-        return redirect()->route('Note.index');
+        return redirect()->route('Category.note');
         
     }
 

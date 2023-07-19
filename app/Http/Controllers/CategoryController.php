@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Category;
+use App\Models\Note;
 use Illuminate\Console\View\Components\Alert;
 use PhpParser\Node\Stmt\Return_;
 
@@ -16,6 +17,15 @@ class CategoryController extends Controller
     {
         $Categorys = Category::all();
         return view('Category.index', compact('Categorys'));
+    }
+
+    public function NoteList()
+    {
+        $Note = Category::join('note','note.NoteID','=','IdCategory')->get();
+
+        // dd($Note);
+
+        return view('Category.NoteList.index', compact('Note'));
     }
 
     /**
@@ -65,7 +75,7 @@ class CategoryController extends Controller
         // dd($request, $id);
         Category::where('CategoryID',$id)->update([
             'CategoryName'=>$request->CategoryName,
-            'CategoryAbout'=>$request->Desc,
+            'CategoryAbout'=>$request->Desc
         ]);
         return redirect()->route('Category.index');
 
