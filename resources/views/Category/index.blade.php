@@ -7,7 +7,7 @@
 @section('content')
   
     <a href="{{ route('Category.create') }}">
-        <button class="mx-2 my-2 bg-green-500 border-2 border-black rounded px-5 text-white">Create</button>
+        <button class="mx-2 my-2 bg-green-500 border-2 border-black rounded-xl px-5 text-white">Create</button>
     </a>
     <div class="grid grid-cols-4 ">
         @foreach ($Categorys as $CT)
@@ -17,7 +17,7 @@
                     <h4 class="text-red-600 border-b mb-2 border-b-red-600 font-bold">{{$errors->first()}}</h4>
                 @endif
                 <div class="flex">
-                    <h1 class=" text-2xl font-semibold mb-2 border-b border-b-white max-w-[100px]">{{ $CT->CategoryName }}</h1>
+                    <h1 class=" text-2xl font-semibold mb-2 border-b-[3px] border-b-white max-w-[100px]">{{ $CT->CategoryName }}</h1>
                     <form action="{{ route('Category.delete',['id'=>$CT->CategoryID]) }}" method="post">
                         @csrf
                         @method('DELETE')
@@ -26,12 +26,12 @@
                     <a class="mr-5 h-[30px] w-[50px] bg-yellow-500 border border-black rounded px-2" href="{{ route('Category.edit',['id'=>$CT->CategoryID]) }}">
                         <button > Edit </button>
                     </a>
-                    <a href="{{ route('Category.note') }}" class="py-1">
+                    <a href="{{ route('Category.note',['id'=>$CT->CategoryID]) }}" class="py-1">
                         <i class="fa-regular fa-folder-open fa-lg"></i>
                     </a>
                 </div>
                 <h1 class="text-xl font-semibold">About:</h1>
-                <p class="line-clamp-4">{{ $CT->CategoryAbout }}</p>
+                <p class="line-clamp-4 w-[200px] h-[200px] ">{{ $CT->CategoryAbout }}</p>
                 </div>
             </div>
         @endforeach

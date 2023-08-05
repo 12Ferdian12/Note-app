@@ -11,13 +11,12 @@ class NoteController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index($id)
     {
-        $Note = Note::join('category','category.CategoryID','=','note.IdCategory')->get();
-
-        // return view('Note.index', compact('Note'));
-
-        return view('Note.index', compact('Note'));
+        $Note = Note::join('category','category.CategoryID','=','note.IdCategory')->where('CategoryID',$id)->get();
+        $category = Category::all();
+        
+        return view('Note.index', compact('Note','category'));
     }
 
     /**
@@ -41,7 +40,7 @@ class NoteController extends Controller
             'IdCategory' =>$request->IDCategory,
             'Content' =>$request->Description,
         ]);
-        return redirect()->route('Category.note');
+        return redirect()->route('Category.index');
         
     }
 
@@ -92,6 +91,6 @@ class NoteController extends Controller
             dd($e->getMessage());
             return  $e->getMessage();
         }
-        return redirect()->route('Note.index');
+        return redirect()->route('Category.index');
     }
 }
