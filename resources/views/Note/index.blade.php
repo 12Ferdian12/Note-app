@@ -21,13 +21,13 @@
                         @method('DELETE')
                         <button class="ml-5 mr-2 h-[30px] w-[60px] bg-red-600 border border-black rounded-xl px-1">Delete</button>
                     </form>
-                    <a class="ml-5 mr-2 h-[30px] w-[60px] bg-yellow-500 border border-black rounded-xl px-1" href="{{ route('Note.edit',['id'=>$NT->NoteID]) }}">
-                        <button class="h-[25px] w-[50px] px-1"> Edit</button>
+                    <a class="ml-5 mr-2 h-[30px] w-[60px] bg-cyan-600 border border-black rounded-xl px-1" href="{{ route('Note.edit',['id'=>$NT->NoteID]) }}">
+                        <button class="h-[25px] w-[50px] px-1"> Open</button>
                     </a>
                 </div>
                     <h1 class=" ">From: {{ $NT->CategoryName }}</h1>
                 <h1 class="text-xl font-semibold">About:</h1>
-                <p class="line-clamp-4">{{ $NT->Content }}</p>
+                <p class="line-clamp-4 overflow-hidden">{{ $NT->Content }}</p>
             </div>
         </div>
 @endforeach
